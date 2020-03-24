@@ -13,4 +13,5 @@
     <string name="deaths">Óbitos</string>
     <string name="mortality_rate">Taxa de\nmortalidade</string>
     <string name="serious_cases">Casos\ngraves</string>
+    <string name="country_default">Brasil</string>
 </resources>

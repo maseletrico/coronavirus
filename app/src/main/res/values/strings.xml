@@ -12,4 +12,5 @@
     <string name="deaths">Deaths</string>
     <string name="mortality_rate">Mortality\nrate</string>
     <string name="serious_cases">Serious\ncases</string>
+    <string name="country_default">Brazil</string>
 </resources>

@@ -68,4 +68,5 @@ dependencies {
 
     //Smooth Bottom Bar
     implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7'
+
 }

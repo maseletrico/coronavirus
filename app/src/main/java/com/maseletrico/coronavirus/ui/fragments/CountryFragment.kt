@@ -20,6 +20,7 @@ import java.util.*
 
 class CountryFragment: Fragment() {
 
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -76,6 +77,7 @@ class CountryFragment: Fragment() {
                     val countryCode = Locale("",mCountry)
                     if (mCountry != null) {
                         CountryCode( mCountry)
+
                     }
                     mCountry?.let { countryCodeSelected -> viewModelCountryStats.getCountryStats(countryCodeSelected) }
                 }
@@ -85,10 +87,10 @@ class CountryFragment: Fragment() {
 
             }
         }
-
     }
     fun getCountryCode(countryName: String) =
         Locale.getISOCountries().find {
             Locale("", it).displayCountry == countryName
         }
+
 }

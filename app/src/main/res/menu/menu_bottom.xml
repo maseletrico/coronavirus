@@ -3,15 +3,15 @@
     <item
         android:id="@+id/item0"
         android:title="@string/menu_timeline"
-        android:icon="@mipmap/ic_timeline"/>
+        android:icon="@drawable/ic_timeline_black_24dp"/>
 
     <item
         android:id="@+id/item1"
         android:title="@string/menu_flag"
-        android:icon="@mipmap/ic_flag"/>
+        android:icon="@drawable/ic_flag_black_24dp"/>
 
     <item
         android:id="@+id/item2"
         android:title="@string/menu_global"
-        android:icon="@mipmap/ic_global"/>
+        android:icon="@drawable/ic_language_black_24dp"/>
 </menu>

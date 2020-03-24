@@ -25,10 +25,6 @@ Gapp/src/main/java/com/maseletrico/coronavirus/data/model/Countrydata.kt,9/f/9f
 Kapp/src/main/java/com/maseletrico/coronavirus/data/model/Countrynewsitem.kt,e/4/e4b03e4d9091693deb42a3aa5dcc846c1e5185ff
 }
 Mapp/src/main/java/com/maseletrico/coronavirus/ui/fragments/CountryFragment.kt,a/f/afaaf7b883486f769af11f295e7ff5f3fd0411fb
-Y
-)app/src/main/res/layout/activity_main.xml,7/6/76b07e40f24cce093536731477540f12e7da3cb6
-U
-%app/src/main/res/menu/menu_bottom.xml,8/c/8c6b7c78f349f698bf47144d0a4d33f0de968cbf
 |
 Lapp/src/main/java/com/maseletrico/coronavirus/ui/fragments/GlobalFragment.kt,0/8/0837af00921bae1aecd3487d2dede110a90635d9
 q
