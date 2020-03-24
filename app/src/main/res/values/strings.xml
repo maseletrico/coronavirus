@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Corona Virus</string>
+    <string name="menu_timeline">Time Line</string>
+    <string name="menu_flag">Country</string>
+    <string name="menu_global">Global</string>
+    <string name="total_cases">Total \ncases</string>
+    <string name="total_active_cases">Active \ncases</string>
+    <string name="new_cases_today">New cases\ntoday</string>
+    <string name="new_deaths_today">New deaths\ntoday</string>
+    <string name="description_total_cases">Total cases</string>
+    <string name="recovered">Recovered</string>
+    <string name="deaths">Deaths</string>
+    <string name="mortality_rate">Mortality\nrate</string>
+    <string name="serious_cases">Serious\ncases</string>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Corona Virus</string>
+    <string name="menu_timeline">Hitórico</string>
+    <string name="menu_flag">Países</string>
+    <string name="menu_global">Mundo</string>
+    <string name="total_cases">Total de\ncasos</string>
+    <string name="total_active_cases">Casos \nativos</string>
+    <string name="new_cases_today">Casos\nhoje</string>
+    <string name="new_deaths_today">Óbitos\nhoje</string>
+    <string name="description_total_cases">Total de casos</string>
+    <string name="recovered">Recuperados</string>
+    <string name="deaths">Óbitos</string>
+    <string name="mortality_rate">Taxa de\nmortalidade</string>
+    <string name="serious_cases">Casos\ngraves</string>
+</resources>
