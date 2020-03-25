@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -50,7 +51,6 @@ class CountryFragment: Fragment() {
 
         viewModelCountryStats.countryCoronaStats.observe(viewLifecycleOwner, Observer {
             it?.let { countryStatistic ->
-                Log.i("Statistica", countryStatistic.toString())
                 txv_total_cases_answer.text = countryStatistic[0].totalCases.toString()
                 txv_recovered_answer.text = countryStatistic[0].totalRecovered.toString()
                 txv_deaths_answer.text = countryStatistic[0].totalDeaths.toString()
@@ -62,7 +62,12 @@ class CountryFragment: Fragment() {
         })
 
         viewModelCountryStats.deathRate.observe(viewLifecycleOwner, Observer{
-            txv_death_rate_answer.text =  it
+            if(it == "vazio"){
+                setFieldsToZero()
+            }else{
+                txv_death_rate_answer.text =  it
+            }
+
         })
 
         spinner_country.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
@@ -88,6 +93,19 @@ class CountryFragment: Fragment() {
             }
         }
     }
+
+    private fun setFieldsToZero() {
+        txv_death_rate_answer.text =  ""
+        txv_total_cases_answer.text = ""
+        txv_recovered_answer.text = ""
+        txv_deaths_answer.text = ""
+        txv_new_cases_today_answer.text = ""
+        txv_new_deaths_today_answer.text = ""
+        txv_active_cases_answer.text = ""
+        txv_serious_cases_answer.text = ""
+        Toast.makeText(context,getString(R.string.country_not_found),Toast.LENGTH_LONG).show()
+    }
+
     fun getCountryCode(countryName: String) =
         Locale.getISOCountries().find {
             Locale("", it).displayCountry == countryName

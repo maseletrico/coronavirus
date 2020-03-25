@@ -13,4 +13,5 @@
     <string name="mortality_rate">Mortality\nrate</string>
     <string name="serious_cases">Serious\ncases</string>
     <string name="country_default">Brazil</string>
+    <string name="country_not_found">No information about this country!</string>
 </resources>

@@ -35,14 +35,19 @@ class CountryStatsViewModel : ViewModel() {
             override fun onResponse(call: Call<CoronaStats>, response: Response<CoronaStats>) {
                 if (response.isSuccessful) {
                     response.body()?.let { coronaStatsResponse ->
-                        percent = with(coronaStatsResponse.countrydata[0]) {
-                            totalDeaths.toDouble() * 100 / totalCases.toDouble()
+                        if(coronaStatsResponse.countrydata != null) {
+                            percent = with(coronaStatsResponse.countrydata[0]) {
+                                totalDeaths.toDouble() * 100 / totalCases.toDouble()
+                            }
+                            var number2digits = String.format("%.2f", percent).toString()
+                            deathRate.value = number2digits
+                            stats.value = coronaStatsResponse.countrydata
+                            countryCoronaStats.value = stats.value
+                        }else{
+                           deathRate.value = "vazio"
                         }
-                        var number2digits = String.format("%.2f", percent).toString()
-                        deathRate.value = number2digits
-                        stats.value = coronaStatsResponse.countrydata
-                        countryCoronaStats.value = stats.value
-                    }
+
+                     }
 
                 }
             }
