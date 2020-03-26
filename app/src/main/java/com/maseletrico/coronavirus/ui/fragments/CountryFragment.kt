@@ -70,6 +70,13 @@ class CountryFragment: Fragment() {
 
         })
 
+        viewModelCountryStats.worldVirusStats.observe(viewLifecycleOwner, Observer {
+            it.let { worldStatistics ->
+                Log.i("VIRUSSTATS: ",worldStatistics[0].toString())
+            }
+
+        })
+
         spinner_country.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -85,6 +92,7 @@ class CountryFragment: Fragment() {
 
                     }
                     mCountry?.let { countryCodeSelected -> viewModelCountryStats.getCountryStats(countryCodeSelected) }
+                    viewModelCountryStats.getGlobalStats()
                 }
             }
 

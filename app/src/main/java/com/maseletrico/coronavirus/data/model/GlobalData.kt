@@ -3,7 +3,7 @@ package com.maseletrico.coronavirus.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class Result(
+data class GlobalData(
     @SerializedName("total_cases")
     val totalCases: Int,
     @SerializedName("total_recovered")
