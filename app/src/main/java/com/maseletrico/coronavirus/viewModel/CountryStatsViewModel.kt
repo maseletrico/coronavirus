@@ -8,6 +8,8 @@ import com.maseletrico.coronavirus.data.model.CoronaStats
 import com.maseletrico.coronavirus.data.model.CoronaWorldStats
 import com.maseletrico.coronavirus.data.model.Countrydata
 import com.maseletrico.coronavirus.data.model.GlobalData
+import com.maseletrico.coronavirus.data.model.timeline.CoronaTimeline
+import com.maseletrico.coronavirus.data.model.timeline.Timelineitem
 import com.maseletrico.coronavirus.util.CountryCode
 import retrofit2.Call
 import retrofit2.Callback
@@ -48,6 +50,28 @@ class CountryStatsViewModel : ViewModel() {
             }
         })
         return stats
+    }
+
+    fun getCountryTimeline(currentCountryCode: String?): MutableLiveData<List<Timelineitem>> {
+        val timelineStats: MutableLiveData<List<Timelineitem>> = MutableLiveData()
+        ApiService.service.timelineList(currentCountryCode).enqueue(object: Callback<CoronaTimeline> {
+
+            override fun onFailure(call: Call<CoronaTimeline>, t: Throwable) {
+                apiErr.value = "Erro ao carregar API"
+                Log.e("API STAT ", t.toString())
+            }
+
+            override fun onResponse(
+                call: Call<CoronaTimeline>,response: Response<CoronaTimeline>) {
+                if(response.body() != null){
+                    response.body().let { coronaTimelineResponse ->
+                        timelineStats.value = coronaTimelineResponse?.timelineitems
+                    }
+                }
+            }
+
+        })
+        return timelineStats
     }
 
     fun getGlobalStats (): MutableLiveData<List<GlobalData>>{

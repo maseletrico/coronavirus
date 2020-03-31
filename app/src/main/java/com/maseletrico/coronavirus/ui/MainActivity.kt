@@ -2,15 +2,12 @@ package com.maseletrico.coronavirus.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.maseletrico.coronavirus.R
 import com.maseletrico.coronavirus.ui.fragments.CountryFragment
 import com.maseletrico.coronavirus.ui.fragments.GlobalFragment
 import com.maseletrico.coronavirus.viewModel.CountryStatsViewModel
 import kotlinx.android.synthetic.main.activity_main.*
-import me.ibrahimsn.lib.OnItemReselectedListener
 import me.ibrahimsn.lib.OnItemSelectedListener
 
 class MainActivity : AppCompatActivity() {
@@ -23,19 +20,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        callFragGlobal()
+        callFragCountry()
+
+        val viewModelCountryStats: CountryStatsViewModel = ViewModelProvider(this).get(
+            CountryStatsViewModel::class.java
+        )
 
         smooth_bottom_bar.setOnItemSelectedListener(object: OnItemSelectedListener {
             override fun onItemSelect(pos: Int) {
                 when(pos){
-                    0 ->  callFragTimeline()
-                    1 ->  callFragCountry()
-                    2 ->  callFragGlobal()
+                    0 ->  viewModelCountryStats.getCountryStats("BR")
+                    1 ->  viewModelCountryStats.getGlobalStats()
                 }
-
-
             }
-
         })
     }
 
@@ -56,4 +53,5 @@ class MainActivity : AppCompatActivity() {
         transaction.replace(R.id.content_frame,countryFragment)
         transaction.commit()
     }
+
 }

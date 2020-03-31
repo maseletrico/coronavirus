@@ -1,5 +1,6 @@
 package com.maseletrico.coronavirus.ui.fragments
 
+import android.database.Observable
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -13,25 +14,50 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.maseletrico.coronavirus.R
+import com.maseletrico.coronavirus.data.entities.FavoriteCountriesEntity
+import com.maseletrico.coronavirus.data.room.AppDatabase
+import com.maseletrico.coronavirus.data.room.FavoriteCountriesDao
 import com.maseletrico.coronavirus.util.CountryCode
 import com.maseletrico.coronavirus.viewModel.CountryStatsViewModel
 import kotlinx.android.synthetic.main.frag_country_layout.*
 import java.util.*
 
 
-class CountryFragment: Fragment() {
+class CountryFragment : Fragment() {
 
+    private var db: AppDatabase? = null
+    private var favoriteCountriesDao: FavoriteCountriesDao? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.frag_country_layout,container,false)
+        return inflater.inflate(R.layout.frag_country_layout, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+
+        db = AppDatabase.getAppDatabase(viewLifecycleOwner)
+        favoriteCountriesDao = db?.favoriteCountriesDao()
+
+        val favoriteCountry1 =
+            FavoriteCountriesEntity(1, "Brazil",
+                "UnitedStates",
+                "Italy",
+                "China",
+                "Spain")
+        favoriteCountriesDao?.insertFavoriteCountry(favoriteCountry1)
+
+        val countryLIst: List<FavoriteCountriesEntity>? =
+            favoriteCountriesDao?.getFavoriteCountries()
+
+        countryLIst?.forEach {
+            println(it)
+        }
+
 
         var countries = mutableSetOf<String>()
         for (locale in Locale.getAvailableLocales()) {
@@ -40,14 +66,21 @@ class CountryFragment: Fragment() {
             }
         }
 
-        val spinnerAdapter = ArrayAdapter<String>(this.requireContext(),android.R.layout.simple_spinner_item, countries.sorted())
-         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val spinnerAdapter = ArrayAdapter<String>(
+            this.requireContext(),
+            android.R.layout.simple_spinner_item,
+            countries.sorted()
+        )
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
         spinner_country!!.adapter = spinnerAdapter
 
 
         val viewModelCountryStats: CountryStatsViewModel = ViewModelProvider(this).get(
-            CountryStatsViewModel::class.java)
+            CountryStatsViewModel::class.java
+        )
+
+        viewModelCountryStats.getCountryTimeline("BR")
 
         viewModelCountryStats.countryCoronaStats.observe(viewLifecycleOwner, Observer {
             it?.let { countryStatistic ->
@@ -55,29 +88,39 @@ class CountryFragment: Fragment() {
                 txv_recovered_answer.text = countryStatistic[0].totalRecovered.toString()
                 txv_deaths_answer.text = countryStatistic[0].totalDeaths.toString()
                 txv_new_cases_today_answer.text = countryStatistic[0].totalNewCasesToday.toString()
-                txv_new_deaths_today_answer.text = countryStatistic[0].totalNewDeathsToday.toString()
+                txv_new_deaths_today_answer.text =
+                    countryStatistic[0].totalNewDeathsToday.toString()
                 txv_active_cases_answer.text = countryStatistic[0].totalActiveCases.toString()
                 txv_serious_cases_answer.text = countryStatistic[0].totalSeriousCases.toString()
             }
         })
 
-        viewModelCountryStats.deathRate.observe(viewLifecycleOwner, Observer{
-            if(it == "vazio"){
+        viewModelCountryStats.deathRate.observe(viewLifecycleOwner, Observer {
+            if (it == "vazio") {
                 setFieldsToZero()
-            }else{
-                txv_death_rate_answer.text =  it
+            } else {
+                txv_death_rate_answer.text = it
             }
 
         })
 
         viewModelCountryStats.worldVirusStats.observe(viewLifecycleOwner, Observer {
             it.let { worldStatistics ->
-                Log.i("VIRUSSTATS: ",worldStatistics[0].toString())
+                worldStatistics?.let { countryStatistic ->
+                    txv_total_cases_answer.text = countryStatistic[0].totalCases.toString()
+                    txv_recovered_answer.text = countryStatistic[0].totalRecovered.toString()
+                    txv_deaths_answer.text = countryStatistic[0].totalDeaths.toString()
+                    txv_new_cases_today_answer.text = countryStatistic[0].totalNewCasesToday.toString()
+                    txv_new_deaths_today_answer.text =
+                        countryStatistic[0].totalNewDeathsToday.toString()
+                    txv_active_cases_answer.text = countryStatistic[0].totalActiveCases.toString()
+                    txv_serious_cases_answer.text = countryStatistic[0].totalSeriousCases.toString()
+                }
             }
 
         })
 
-        spinner_country.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        spinner_country.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
                 view: View?,
@@ -86,24 +129,28 @@ class CountryFragment: Fragment() {
             ) {
                 val country = parent?.let {
                     val mCountry = getCountryCode(it.selectedItem.toString())
-                    val countryCode = Locale("",mCountry)
+                    val countryCode = Locale("", mCountry)
                     if (mCountry != null) {
-                        CountryCode( mCountry)
+                        CountryCode(mCountry)
 
                     }
-                    mCountry?.let { countryCodeSelected -> viewModelCountryStats.getCountryStats(countryCodeSelected) }
-                    viewModelCountryStats.getGlobalStats()
+                    mCountry?.let { countryCodeSelected ->
+                        viewModelCountryStats.getCountryStats(
+                            countryCodeSelected
+                        )
+                    }
+
                 }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
-
+                println("ok")
             }
         }
     }
 
     private fun setFieldsToZero() {
-        txv_death_rate_answer.text =  ""
+        txv_death_rate_answer.text = ""
         txv_total_cases_answer.text = ""
         txv_recovered_answer.text = ""
         txv_deaths_answer.text = ""
@@ -111,7 +158,7 @@ class CountryFragment: Fragment() {
         txv_new_deaths_today_answer.text = ""
         txv_active_cases_answer.text = ""
         txv_serious_cases_answer.text = ""
-        Toast.makeText(context,getString(R.string.country_not_found),Toast.LENGTH_LONG).show()
+        Toast.makeText(context, getString(R.string.country_not_found), Toast.LENGTH_LONG).show()
     }
 
     fun getCountryCode(countryName: String) =

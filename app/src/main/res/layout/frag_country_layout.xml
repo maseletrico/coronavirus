@@ -220,4 +220,5 @@
         app:layout_constraintEnd_toEndOf="@+id/imv_sirious_cases"
         app:layout_constraintStart_toStartOf="@+id/imv_sirious_cases"
         tools:text="0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

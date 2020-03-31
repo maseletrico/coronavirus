@@ -2,6 +2,7 @@ package com.maseletrico.coronavirus.data
 
 import com.maseletrico.coronavirus.data.model.CoronaStats
 import com.maseletrico.coronavirus.data.model.CoronaWorldStats
+import com.maseletrico.coronavirus.data.model.timeline.CoronaTimeline
 import com.maseletrico.coronavirus.util.ApiConstants
 import retrofit2.Call
 import retrofit2.http.GET
@@ -21,6 +22,11 @@ interface CountryStatApiService {
         @Query("global") location: String? = "stats"
     ): Call<CoronaWorldStats>
 
+    //https://thevirustracker.com/free-api?countryTimeline=BR
+    @GET(ApiConstants.API_URL)
+    fun timelineList(
+        @Query("countryTimeLine") location: String? = ApiConstants.API_COUNTRY
+    ): Call<CoronaTimeline>
 }
 
 
