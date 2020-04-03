@@ -21,5 +21,8 @@ data class Countrydata(
     @SerializedName("total_active_cases")
     val totalActiveCases: Int,
     @SerializedName("total_serious_cases")
-    val totalSeriousCases: Int
+    val totalSeriousCases: Int,
+    @SerializedName("total_danger_rank")
+    val totalDangerRank: Int
+
 )

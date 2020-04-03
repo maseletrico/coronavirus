@@ -14,4 +14,7 @@
     <string name="serious_cases">Serious\ncases</string>
     <string name="country_default">Brazil</string>
     <string name="country_not_found">No information about this country!</string>
+    <string name="cases_per_million">Cases per\nmillion</string>
+    <string name="deaths_per_million">Deaths per\nmillion</string>
+    <string name="danger_rank">Danger\nrank</string>
 </resources>

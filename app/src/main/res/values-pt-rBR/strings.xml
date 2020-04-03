@@ -15,4 +15,7 @@
     <string name="serious_cases">Casos\ngraves</string>
     <string name="country_default">Brasil</string>
     <string name="country_not_found">Sem informações para este país!</string>
+    <string name="cases_per_million">Casos por\nmilhão</string>
+    <string name="deaths_per_million">Óbitos por\nmilhão</string>
+    <string name="danger_rank">Classificação\nde perigo</string>
 </resources>

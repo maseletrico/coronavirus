@@ -8,9 +8,9 @@ import com.maseletrico.coronavirus.data.model.CoronaStats
 import com.maseletrico.coronavirus.data.model.CoronaWorldStats
 import com.maseletrico.coronavirus.data.model.Countrydata
 import com.maseletrico.coronavirus.data.model.GlobalData
+import com.maseletrico.coronavirus.data.model.novelCovid.novelByCountry
 import com.maseletrico.coronavirus.data.model.timeline.CoronaTimeline
 import com.maseletrico.coronavirus.data.model.timeline.Timelineitem
-import com.maseletrico.coronavirus.util.CountryCode
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,7 +22,7 @@ class CountryStatsViewModel : ViewModel() {
     val apiErr: MutableLiveData<String> = MutableLiveData("valor inicial")
     var deathRate = MutableLiveData<String>()
     var percent: Double = 0.0
-    //var currentCode: CountryCode
+    var novelCountryResponse: MutableLiveData<novelByCountry> = MutableLiveData<novelByCountry>()
 
     fun getCountryStats(currentCountryCode: String?): MutableLiveData<List<Countrydata>> {
         val stats: MutableLiveData<List<Countrydata>> = MutableLiveData()
@@ -95,5 +95,25 @@ class CountryStatsViewModel : ViewModel() {
         return globalStats
     }
 
+    fun getNovelCountryStats(novelCountry: String): MutableLiveData<novelByCountry>{
+        val novelCountryStats: MutableLiveData<novelByCountry> = MutableLiveData()
+        ApiService.serviceNovel.novelCountryInfo(novelCountry).enqueue(object: Callback<novelByCountry> {
+            override fun onFailure(call: Call<novelByCountry>, t: Throwable) {
+                apiErr.value = "Erro ao carregar API Novel"
+                Log.e("API STAT WORLD ", t.toString())
+            }
+
+            override fun onResponse(
+                call: Call<novelByCountry>, response: Response<novelByCountry>
+            ) {
+                response.body().let { novelCountryStatistic ->
+                    novelCountryStats.value = novelCountryStatistic
+                    novelCountryResponse.value = novelCountryStatistic
+                }
+            }
+
+        })
+        return novelCountryStats
+    }
 
 }

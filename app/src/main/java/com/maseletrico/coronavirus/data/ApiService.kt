@@ -20,4 +20,17 @@ object ApiService {
             .build()
     }
     val service: CountryStatApiService = initRetrofit().create(CountryStatApiService::class.java)
+
+    private fun initRetrofitNovel(): Retrofit{
+        val okHttpClient = OkHttpClient().newBuilder()
+            .connectTimeout(2000, TimeUnit.MILLISECONDS)
+            .build()
+
+        return Retrofit.Builder()
+            .baseUrl(ApiConstants.BASE_NOVEL_COVID_API)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+    val serviceNovel: CountryStatApiService = initRetrofitNovel().create(CountryStatApiService::class.java)
 }

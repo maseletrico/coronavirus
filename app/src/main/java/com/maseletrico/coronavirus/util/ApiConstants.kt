@@ -10,6 +10,9 @@ class ApiConstants {
         const val API_URL = "free-api"
         const val API_COUNTRY = "BR"
         const val SHARED_PREFS_COUNTRY_CHOICE = "countryChoice"
+        //novel Covid Api  https://corona.lmao.ninja/countries/BR
+        const val BASE_NOVEL_COVID_API = "https://corona.lmao.ninja/"
+        const val NOVEL_URL_COUNTRIES = "countries/"
 
     }
 

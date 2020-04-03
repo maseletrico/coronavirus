@@ -19,7 +19,7 @@
         android:id="@+id/imv_total_cases"
         style="@style/imageViewButton"
         android:background="@color/colorAccent"
-        android:contentDescription="@string/description_total_cases"
+        android:contentDescription="@string/cases_per_million"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_country" />
 
@@ -220,5 +220,105 @@
         app:layout_constraintEnd_toEndOf="@+id/imv_sirious_cases"
         app:layout_constraintStart_toStartOf="@+id/imv_sirious_cases"
         tools:text="0" />
+    <!--______________________________________________________________-->
+
+    <ImageView
+        android:id="@+id/imv_cases_per_million"
+        style="@style/imageViewButton"
+        android:background="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="@+id/imv_total_active_cases"
+        app:layout_constraintStart_toStartOf="@+id/imv_total_active_cases"
+        app:layout_constraintTop_toBottomOf="@+id/imv_total_active_cases" />
+
+    <TextView
+        android:id="@+id/txv_label_cases_per_million"
+        style="@style/imageViewButtonText"
+        android:text="@string/cases_per_million"
+        app:layout_constraintEnd_toEndOf="@+id/imv_cases_per_million"
+        app:layout_constraintStart_toStartOf="@+id/imv_cases_per_million"
+        app:layout_constraintTop_toTopOf="@+id/imv_cases_per_million" />
+
+    <TextView
+        android:id="@+id/txv_cases_per_million_answer"
+        style="@style/textAnswerButtonText"
+        app:layout_constraintBottom_toBottomOf="@+id/imv_cases_per_million"
+        app:layout_constraintEnd_toEndOf="@+id/txv_label_cases_per_million"
+        app:layout_constraintStart_toStartOf="@+id/txv_label_cases_per_million"
+        tools:text="0" />
+    <!--______________________________________________________________-->
+
+    <ImageView
+        android:id="@+id/imv_deaths_per_million"
+        style="@style/imageViewButton"
+        android:background="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="@+id/imv_death_rate"
+        app:layout_constraintStart_toStartOf="@+id/imv_death_rate"
+        app:layout_constraintTop_toBottomOf="@+id/imv_death_rate" />
+
+    <TextView
+        android:id="@+id/txv_label_deaths_per_million"
+        style="@style/imageViewButtonText"
+        android:text="@string/deaths_per_million"
+        app:layout_constraintEnd_toEndOf="@+id/imv_deaths_per_million"
+        app:layout_constraintStart_toStartOf="@+id/imv_deaths_per_million"
+        app:layout_constraintTop_toTopOf="@+id/imv_deaths_per_million" />
+
+    <TextView
+        android:id="@+id/txv_deaths_per_million_answer"
+        style="@style/textAnswerButtonText"
+        app:layout_constraintBottom_toBottomOf="@+id/imv_deaths_per_million"
+        app:layout_constraintEnd_toEndOf="@+id/txv_label_deaths_per_million"
+        app:layout_constraintStart_toStartOf="@+id/txv_label_deaths_per_million"
+        tools:text="0" />
+    <!--______________________________________________________________-->
+    <ImageView
+        android:id="@+id/imv_danger_rank"
+        style="@style/imageViewButton"
+        android:background="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="@+id/imv_sirious_cases"
+        app:layout_constraintStart_toStartOf="@+id/imv_sirious_cases"
+        app:layout_constraintTop_toBottomOf="@+id/imv_sirious_cases" />
+
+    <TextView
+        android:id="@+id/txv_label_danger_rank"
+        style="@style/imageViewButtonText"
+        android:text="@string/danger_rank"
+        app:layout_constraintEnd_toEndOf="@+id/imv_danger_rank"
+        app:layout_constraintStart_toStartOf="@+id/imv_danger_rank"
+        app:layout_constraintTop_toTopOf="@+id/imv_danger_rank" />
+
+    <TextView
+        android:id="@+id/txv_danger_rank_answer"
+        style="@style/textAnswerButtonText"
+        app:layout_constraintBottom_toBottomOf="@+id/imv_danger_rank"
+        app:layout_constraintEnd_toEndOf="@+id/txv_label_danger_rank"
+        app:layout_constraintStart_toStartOf="@+id/txv_label_danger_rank"
+        tools:text="0" />
+    <!--______________________________________________________________-->
+
+
+    <ImageView
+        android:id="@+id/imv_flag"
+        style="@style/imageViewButton"
+        android:layout_width="90dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="24dp"
+        android:background="@color/colorAccent"
+        android:src="@drawable/ic_flag_black_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imv_cases_per_million"
+        app:layout_constraintTop_toBottomOf="@+id/imv_cases_per_million" />
+
+
+    <TextView
+        android:id="@+id/txv_updated"
+        style="@style/textAnswerButtonText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_marginTop="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="date" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

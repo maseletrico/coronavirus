@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.maseletrico.coronavirus.R
 import com.maseletrico.coronavirus.data.entities.FavoriteCountriesEntity
 import com.maseletrico.coronavirus.data.room.AppDatabase
@@ -20,7 +21,10 @@ import com.maseletrico.coronavirus.data.room.FavoriteCountriesDao
 import com.maseletrico.coronavirus.util.CountryCode
 import com.maseletrico.coronavirus.viewModel.CountryStatsViewModel
 import kotlinx.android.synthetic.main.frag_country_layout.*
+import java.sql.Timestamp
+import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.time.hours
 
 
 class CountryFragment : Fragment() {
@@ -92,6 +96,7 @@ class CountryFragment : Fragment() {
                     countryStatistic[0].totalNewDeathsToday.toString()
                 txv_active_cases_answer.text = countryStatistic[0].totalActiveCases.toString()
                 txv_serious_cases_answer.text = countryStatistic[0].totalSeriousCases.toString()
+                txv_danger_rank_answer.text = countryStatistic[0].totalDangerRank.toString()
             }
         })
 
@@ -120,6 +125,32 @@ class CountryFragment : Fragment() {
 
         })
 
+        viewModelCountryStats.novelCountryResponse.observe(viewLifecycleOwner, Observer {
+            it.let {novelStatisticByCountry ->
+                val date = Date(novelStatisticByCountry.updated)
+                val format = SimpleDateFormat("dd/MM/yyyy HH:mm")
+                txv_updated.text = format.format(date).toString()
+                txv_total_cases_answer.text = novelStatisticByCountry.cases.toString()
+                txv_recovered_answer.text = novelStatisticByCountry.recovered.toString()
+                txv_deaths_answer.text = novelStatisticByCountry.deaths.toString()
+                txv_new_cases_today_answer.text = novelStatisticByCountry.todayCases.toString()
+                txv_new_deaths_today_answer.text = novelStatisticByCountry.todayDeaths.toString()
+                txv_active_cases_answer.text = novelStatisticByCountry.active.toString()
+                txv_serious_cases_answer.text = novelStatisticByCountry.critical .toString()
+                txv_cases_per_million_answer.text = novelStatisticByCountry.casesPerOneMillion.toString()
+                txv_deaths_per_million_answer.text = novelStatisticByCountry.deathsPerOneMillion.toString()
+
+                Glide.with(imv_flag)
+                    .load(novelStatisticByCountry.countryInfo.flag)
+                    .fallback(R.drawable.ic_flag_black_24dp)
+                    .into(imv_flag)
+//                Glide.with(itemView.context)
+//                    .load(article.urlToImage)
+//                    .fallback(R.mipmap.news_default_image)
+//                    .into(image)
+            }
+        })
+
         spinner_country.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -135,9 +166,8 @@ class CountryFragment : Fragment() {
 
                     }
                     mCountry?.let { countryCodeSelected ->
-                        viewModelCountryStats.getCountryStats(
-                            countryCodeSelected
-                        )
+                        viewModelCountryStats.getCountryStats(countryCodeSelected)
+                        viewModelCountryStats.getNovelCountryStats(countryCodeSelected)
                     }
 
                 }
