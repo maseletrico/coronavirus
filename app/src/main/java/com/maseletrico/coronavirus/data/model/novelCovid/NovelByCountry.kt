@@ -1,9 +1,9 @@
-package com.maseletrico.coronavirus.data.model.novelCountryList
+package com.maseletrico.coronavirus.data.model.novelCovid
 
 
 import com.google.gson.annotations.SerializedName
 
-data class novelCountriesItem(
+data class NovelByCountry(
     @SerializedName("country")
     val country: String,
     @SerializedName("countryInfo")
@@ -23,9 +23,9 @@ data class novelCountriesItem(
     @SerializedName("critical")
     val critical: Int,
     @SerializedName("casesPerOneMillion")
-    val casesPerOneMillion: Int,
+    val casesPerOneMillion: Number,
     @SerializedName("deathsPerOneMillion")
-    val deathsPerOneMillion: Int,
+    val deathsPerOneMillion: Number,
     @SerializedName("updated")
-    val updated: Int
+    val updated: Long
 )

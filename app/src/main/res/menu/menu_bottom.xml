@@ -7,6 +7,6 @@
 
     <item
         android:id="@+id/item1"
-        android:title="@string/menu_global"
-        android:icon="@drawable/ic_language_black_24dp"/>
+        android:title="@string/menu_timeline"
+        android:icon="@drawable/ic_timeline_black_24dp"/>
 </menu>

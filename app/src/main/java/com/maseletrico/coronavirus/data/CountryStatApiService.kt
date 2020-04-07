@@ -2,10 +2,11 @@ package com.maseletrico.coronavirus.data
 
 import com.maseletrico.coronavirus.data.model.CoronaStats
 import com.maseletrico.coronavirus.data.model.CoronaWorldStats
-import com.maseletrico.coronavirus.data.model.novelCovid.novelByCountry
+import com.maseletrico.coronavirus.data.model.novelCountryList.NovelCountries
+import com.maseletrico.coronavirus.data.model.novelCovid.NovelByCountry
+import com.maseletrico.coronavirus.data.model.novelHystorical.NovelCountryHistorical
 import com.maseletrico.coronavirus.data.model.timeline.CoronaTimeline
 import com.maseletrico.coronavirus.util.ApiConstants
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -42,10 +43,16 @@ interface CountryStatApiService {
     @GET("countries/{countryCodeIso}")
     fun novelCountryInfo(
         @Path("countryCodeIso")fullUrl: String
-    ): Call<novelByCountry>
+    ): Call<NovelByCountry>
 
-//    @GET("/image/{id}")
-//    fun example(@Path("id") id: Int): Call<ResponseBody?>?
+    @GET("countries")
+    fun novelCountries(): Call<NovelCountries>
+
+    //"https://corona.lmao.ninja/v2/historical/BR" -H "accept: application/json"
+    @GET("/v2/historical/{countryCodeIso}")
+    fun novelCountryHistorical(
+        @Path("countryCodeIso") timeLine: String
+    ): Call<NovelCountryHistorical>
 }
 
 

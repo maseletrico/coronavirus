@@ -1,324 +1,420 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/spinner_country"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imv_total_cases"
-        style="@style/imageViewButton"
-        android:background="@color/colorAccent"
-        android:contentDescription="@string/cases_per_million"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_country" />
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinner_country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txv_label_total_cases"
-        style="@style/imageViewButtonText"
-        android:text="@string/total_cases"
-        app:layout_constraintEnd_toEndOf="@+id/imv_total_cases"
-        app:layout_constraintStart_toStartOf="@+id/imv_total_cases"
-        app:layout_constraintTop_toTopOf="@+id/imv_total_cases" />
+        <ImageView
+            android:id="@+id/imv_total_cases"
+            style="@style/imageViewButton"
+            android:background="@color/colorAccent"
+            android:contentDescription="@string/cases_per_million"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_country" />
 
-    <TextView
-        android:id="@+id/txv_total_cases_answer"
-        style="@style/textAnswerButtonText"
-        app:layout_constraintBottom_toBottomOf="@+id/imv_total_cases"
-        app:layout_constraintEnd_toEndOf="@+id/txv_label_total_cases"
-        app:layout_constraintStart_toStartOf="@+id/txv_label_total_cases"
-        tools:text="0" />
-    <!--______________________________________________________________-->
+        <TextView
+            android:id="@+id/txv_label_total_cases"
+            style="@style/imageViewButtonText"
+            android:text="@string/total_cases"
+            app:layout_constraintEnd_toEndOf="@+id/imv_total_cases"
+            app:layout_constraintStart_toStartOf="@+id/imv_total_cases"
+            app:layout_constraintTop_toTopOf="@+id/imv_total_cases" />
 
-    <ImageView
-        android:id="@+id/imv_recovered"
-        style="@style/imageViewButton"
-        android:background="@color/colorAccent"
-        app:layout_constraintEnd_toStartOf="@+id/imv_deaths"
-        app:layout_constraintStart_toEndOf="@+id/imv_total_cases"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_country" />
+        <TextView
+            android:id="@+id/txv_total_cases_answer"
+            style="@style/textAnswerButtonText"
+            app:layout_constraintBottom_toBottomOf="@+id/imv_total_cases"
+            app:layout_constraintEnd_toEndOf="@+id/txv_label_total_cases"
+            app:layout_constraintStart_toStartOf="@+id/txv_label_total_cases"
+            tools:text="0" />
+        <!--______________________________________________________________-->
 
-    <TextView
-        android:id="@+id/txv_label_recovered"
-        style="@style/imageViewButtonText"
-        android:text="@string/recovered"
-        app:layout_constraintEnd_toEndOf="@+id/imv_recovered"
-        app:layout_constraintStart_toStartOf="@+id/imv_recovered"
-        app:layout_constraintTop_toTopOf="@+id/imv_recovered" />
+        <ImageView
+            android:id="@+id/imv_recovered"
+            style="@style/imageViewButton"
+            android:background="@color/colorAccent"
+            app:layout_constraintEnd_toStartOf="@+id/imv_deaths"
+            app:layout_constraintStart_toEndOf="@+id/imv_total_cases"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_country" />
 
-    <TextView
-        android:id="@+id/txv_recovered_answer"
-        style="@style/textAnswerButtonText"
-        app:layout_constraintBottom_toBottomOf="@+id/imv_recovered"
-        app:layout_constraintEnd_toEndOf="@+id/imv_recovered"
-        app:layout_constraintStart_toStartOf="@+id/imv_recovered"
-        tools:text="0" />
-    <!--______________________________________________________________-->
+        <TextView
+            android:id="@+id/txv_label_recovered"
+            style="@style/imageViewButtonText"
+            android:text="@string/recovered"
+            app:layout_constraintEnd_toEndOf="@+id/imv_recovered"
+            app:layout_constraintStart_toStartOf="@+id/imv_recovered"
+            app:layout_constraintTop_toTopOf="@+id/imv_recovered" />
 
-    <ImageView
-        android:id="@+id/imv_deaths"
-        style="@style/imageViewButton"
-        android:background="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_country" />
+        <TextView
+            android:id="@+id/txv_recovered_answer"
+            style="@style/textAnswerButtonText"
+            app:layout_constraintBottom_toBottomOf="@+id/imv_recovered"
+            app:layout_constraintEnd_toEndOf="@+id/imv_recovered"
+            app:layout_constraintStart_toStartOf="@+id/imv_recovered"
+            tools:text="0" />
+        <!--______________________________________________________________-->
 
-    <TextView
-        android:id="@+id/txv_label_deaths"
-        style="@style/imageViewButtonText"
-        android:text="@string/deaths"
-        app:layout_constraintEnd_toEndOf="@+id/imv_deaths"
-        app:layout_constraintStart_toStartOf="@+id/imv_deaths"
-        app:layout_constraintTop_toTopOf="@+id/imv_deaths" />
+        <ImageView
+            android:id="@+id/imv_deaths"
+            style="@style/imageViewButton"
+            android:background="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_country" />
 
-    <TextView
-        android:id="@+id/txv_deaths_answer"
-        style="@style/textAnswerButtonText"
-        app:layout_constraintBottom_toBottomOf="@+id/imv_deaths"
-        app:layout_constraintEnd_toEndOf="@+id/imv_deaths"
-        app:layout_constraintStart_toStartOf="@+id/imv_deaths"
-        tools:text="0" />
-    <!--______________________________________________________________-->
+        <TextView
+            android:id="@+id/txv_label_deaths"
+            style="@style/imageViewButtonText"
+            android:text="@string/deaths"
+            app:layout_constraintEnd_toEndOf="@+id/imv_deaths"
+            app:layout_constraintStart_toStartOf="@+id/imv_deaths"
+            app:layout_constraintTop_toTopOf="@+id/imv_deaths" />
 
-    <ImageView
-        android:id="@+id/imv_new_cases_today"
-        style="@style/imageViewButton"
-        android:background="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="@+id/imv_total_cases"
-        app:layout_constraintStart_toStartOf="@+id/imv_total_cases"
-        app:layout_constraintTop_toBottomOf="@+id/imv_total_cases" />
+        <TextView
+            android:id="@+id/txv_deaths_answer"
+            style="@style/textAnswerButtonText"
+            app:layout_constraintBottom_toBottomOf="@+id/imv_deaths"
+            app:layout_constraintEnd_toEndOf="@+id/imv_deaths"
+            app:layout_constraintStart_toStartOf="@+id/imv_deaths"
+            tools:text="0" />
+        <!--______________________________________________________________-->
 
-    <TextView
-        android:id="@+id/txv_label_new_cases_today"
-        style="@style/imageViewButtonText"
-        android:text="@string/new_cases_today"
-        app:layout_constraintEnd_toEndOf="@+id/imv_new_cases_today"
-        app:layout_constraintStart_toStartOf="@+id/imv_new_cases_today"
-        app:layout_constraintTop_toTopOf="@id/imv_new_cases_today" />
+        <ImageView
+            android:id="@+id/imv_new_cases_today"
+            style="@style/imageViewButton"
+            android:background="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="@+id/imv_total_cases"
+            app:layout_constraintStart_toStartOf="@+id/imv_total_cases"
+            app:layout_constraintTop_toBottomOf="@+id/imv_total_cases" />
 
-    <TextView
-        android:id="@+id/txv_new_cases_today_answer"
-        style="@style/textAnswerButtonText"
-        app:layout_constraintBottom_toBottomOf="@+id/imv_new_cases_today"
-        app:layout_constraintEnd_toEndOf="@+id/imv_new_cases_today"
-        app:layout_constraintStart_toStartOf="@+id/imv_new_cases_today"
-        tools:text="0" />
-    <!--______________________________________________________________-->
+        <TextView
+            android:id="@+id/txv_label_new_cases_today"
+            style="@style/imageViewButtonText"
+            android:text="@string/new_cases_today"
+            app:layout_constraintEnd_toEndOf="@+id/imv_new_cases_today"
+            app:layout_constraintStart_toStartOf="@+id/imv_new_cases_today"
+            app:layout_constraintTop_toTopOf="@id/imv_new_cases_today" />
 
-    <ImageView
-        android:id="@+id/imv_new_deaths_today"
-        style="@style/imageViewButton"
-        android:background="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="@+id/imv_recovered"
-        app:layout_constraintStart_toStartOf="@+id/imv_recovered"
-        app:layout_constraintTop_toBottomOf="@+id/imv_recovered" />
+        <TextView
+            android:id="@+id/txv_new_cases_today_answer"
+            style="@style/textAnswerButtonText"
+            app:layout_constraintBottom_toBottomOf="@+id/imv_new_cases_today"
+            app:layout_constraintEnd_toEndOf="@+id/imv_new_cases_today"
+            app:layout_constraintStart_toStartOf="@+id/imv_new_cases_today"
+            tools:text="0" />
+        <!--______________________________________________________________-->
 
-    <TextView
-        android:id="@+id/txv_label_new_deaths_today"
-        style="@style/imageViewButtonText"
-        android:text="@string/new_deaths_today"
-        app:layout_constraintEnd_toEndOf="@+id/imv_new_deaths_today"
-        app:layout_constraintStart_toStartOf="@+id/imv_new_deaths_today"
-        app:layout_constraintTop_toTopOf="@+id/imv_new_deaths_today" />
+        <ImageView
+            android:id="@+id/imv_new_deaths_today"
+            style="@style/imageViewButton"
+            android:background="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="@+id/imv_recovered"
+            app:layout_constraintStart_toStartOf="@+id/imv_recovered"
+            app:layout_constraintTop_toBottomOf="@+id/imv_recovered" />
 
-    <TextView
-        android:id="@+id/txv_new_deaths_today_answer"
-        style="@style/textAnswerButtonText"
-        app:layout_constraintBottom_toBottomOf="@+id/imv_new_deaths_today"
-        app:layout_constraintEnd_toEndOf="@+id/imv_new_deaths_today"
-        app:layout_constraintStart_toStartOf="@+id/imv_new_deaths_today"
-        tools:text="0" />
-    <!--______________________________________________________________-->
+        <TextView
+            android:id="@+id/txv_label_new_deaths_today"
+            style="@style/imageViewButtonText"
+            android:text="@string/new_deaths_today"
+            app:layout_constraintEnd_toEndOf="@+id/imv_new_deaths_today"
+            app:layout_constraintStart_toStartOf="@+id/imv_new_deaths_today"
+            app:layout_constraintTop_toTopOf="@+id/imv_new_deaths_today" />
 
-    <ImageView
-        android:id="@+id/imv_total_active_cases"
-        style="@style/imageViewButton"
-        android:background="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="@+id/imv_deaths"
-        app:layout_constraintStart_toStartOf="@+id/imv_deaths"
-        app:layout_constraintTop_toBottomOf="@+id/imv_deaths" />
+        <TextView
+            android:id="@+id/txv_new_deaths_today_answer"
+            style="@style/textAnswerButtonText"
+            app:layout_constraintBottom_toBottomOf="@+id/imv_new_deaths_today"
+            app:layout_constraintEnd_toEndOf="@+id/imv_new_deaths_today"
+            app:layout_constraintStart_toStartOf="@+id/imv_new_deaths_today"
+            tools:text="0" />
+        <!--______________________________________________________________-->
 
-    <TextView
-        android:id="@+id/txv_label_total_active_cases"
-        style="@style/imageViewButtonText"
-        android:text="@string/total_active_cases"
-        app:layout_constraintEnd_toEndOf="@+id/imv_total_active_cases"
-        app:layout_constraintStart_toStartOf="@+id/imv_total_active_cases"
-        app:layout_constraintTop_toTopOf="@+id/imv_total_active_cases" />
+        <ImageView
+            android:id="@+id/imv_total_active_cases"
+            style="@style/imageViewButton"
+            android:background="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="@+id/imv_deaths"
+            app:layout_constraintStart_toStartOf="@+id/imv_deaths"
+            app:layout_constraintTop_toBottomOf="@+id/imv_deaths" />
 
-    <TextView
-        android:id="@+id/txv_active_cases_answer"
-        style="@style/textAnswerButtonText"
-        app:layout_constraintBottom_toBottomOf="@+id/imv_total_active_cases"
-        app:layout_constraintEnd_toEndOf="@+id/imv_total_active_cases"
-        app:layout_constraintStart_toStartOf="@+id/imv_total_active_cases"
-        tools:text="0" />
-    <!--______________________________________________________________-->
+        <TextView
+            android:id="@+id/txv_label_total_active_cases"
+            style="@style/imageViewButtonText"
+            android:text="@string/total_active_cases"
+            app:layout_constraintEnd_toEndOf="@+id/imv_total_active_cases"
+            app:layout_constraintStart_toStartOf="@+id/imv_total_active_cases"
+            app:layout_constraintTop_toTopOf="@+id/imv_total_active_cases" />
 
-    <ImageView
-        android:id="@+id/imv_death_rate"
-        style="@style/imageViewButton"
-        android:background="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="@+id/imv_new_cases_today"
-        app:layout_constraintStart_toStartOf="@+id/imv_new_cases_today"
-        app:layout_constraintTop_toBottomOf="@+id/imv_new_cases_today" />
+        <TextView
+            android:id="@+id/txv_active_cases_answer"
+            style="@style/textAnswerButtonText"
+            app:layout_constraintBottom_toBottomOf="@+id/imv_total_active_cases"
+            app:layout_constraintEnd_toEndOf="@+id/imv_total_active_cases"
+            app:layout_constraintStart_toStartOf="@+id/imv_total_active_cases"
+            tools:text="0" />
+        <!--______________________________________________________________-->
 
-    <TextView
-        android:id="@+id/txv_label_death_rate"
-        style="@style/imageViewButtonText"
-        android:text="@string/mortality_rate"
-        app:layout_constraintEnd_toEndOf="@+id/imv_death_rate"
-        app:layout_constraintStart_toStartOf="@+id/imv_death_rate"
-        app:layout_constraintTop_toTopOf="@+id/imv_death_rate" />
+        <ImageView
+            android:id="@+id/imv_death_rate"
+            style="@style/imageViewButton"
+            android:background="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="@+id/imv_new_cases_today"
+            app:layout_constraintStart_toStartOf="@+id/imv_new_cases_today"
+            app:layout_constraintTop_toBottomOf="@+id/imv_new_cases_today" />
 
-    <TextView
-        android:id="@+id/txv_death_rate_answer"
-        style="@style/textAnswerButtonText"
-        app:layout_constraintBottom_toBottomOf="@+id/imv_death_rate"
-        app:layout_constraintEnd_toEndOf="@+id/imv_death_rate"
-        app:layout_constraintStart_toStartOf="@+id/imv_death_rate"
-        tools:text="0" />
+        <TextView
+            android:id="@+id/txv_label_death_rate"
+            style="@style/imageViewButtonText"
+            android:text="@string/mortality_rate"
+            app:layout_constraintEnd_toEndOf="@+id/imv_death_rate"
+            app:layout_constraintStart_toStartOf="@+id/imv_death_rate"
+            app:layout_constraintTop_toTopOf="@+id/imv_death_rate" />
 
-    <TextView
-        android:id="@+id/txv_death_rate_percent"
-        style="@style/textAnswerButtonText"
-        android:text="%"
-        app:layout_constraintBottom_toBottomOf="@+id/txv_death_rate_answer"
-        app:layout_constraintStart_toEndOf="@+id/txv_death_rate_answer"
-        app:layout_constraintTop_toTopOf="@+id/txv_death_rate_answer" />
-    <!--______________________________________________________________-->
+        <TextView
+            android:id="@+id/txv_death_rate_answer"
+            style="@style/textAnswerButtonText"
+            app:layout_constraintBottom_toBottomOf="@+id/imv_death_rate"
+            app:layout_constraintEnd_toEndOf="@+id/imv_death_rate"
+            app:layout_constraintStart_toStartOf="@+id/imv_death_rate"
+            tools:text="0" />
 
-    <ImageView
-        android:id="@+id/imv_sirious_cases"
-        style="@style/imageViewButton"
-        android:background="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="@+id/imv_new_deaths_today"
-        app:layout_constraintStart_toStartOf="@+id/imv_new_deaths_today"
-        app:layout_constraintTop_toBottomOf="@+id/imv_new_deaths_today" />
+        <TextView
+            android:id="@+id/txv_death_rate_percent"
+            style="@style/textAnswerButtonText"
+            android:text="%"
+            app:layout_constraintBottom_toBottomOf="@+id/txv_death_rate_answer"
+            app:layout_constraintStart_toEndOf="@+id/txv_death_rate_answer"
+            app:layout_constraintTop_toTopOf="@+id/txv_death_rate_answer" />
+        <!--______________________________________________________________-->
 
-    <TextView
-        android:id="@+id/txv_label_seriuos_cases"
-        style="@style/imageViewButtonText"
-        android:text="@string/serious_cases"
-        app:layout_constraintEnd_toEndOf="@+id/imv_sirious_cases"
-        app:layout_constraintStart_toStartOf="@+id/imv_sirious_cases"
-        app:layout_constraintTop_toTopOf="@+id/imv_sirious_cases" />
+        <ImageView
+            android:id="@+id/imv_sirious_cases"
+            style="@style/imageViewButton"
+            android:background="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="@+id/imv_new_deaths_today"
+            app:layout_constraintStart_toStartOf="@+id/imv_new_deaths_today"
+            app:layout_constraintTop_toBottomOf="@+id/imv_new_deaths_today" />
 
-    <TextView
-        android:id="@+id/txv_serious_cases_answer"
-        style="@style/textAnswerButtonText"
-        app:layout_constraintBottom_toBottomOf="@+id/imv_sirious_cases"
-        app:layout_constraintEnd_toEndOf="@+id/imv_sirious_cases"
-        app:layout_constraintStart_toStartOf="@+id/imv_sirious_cases"
-        tools:text="0" />
-    <!--______________________________________________________________-->
+        <TextView
+            android:id="@+id/txv_label_seriuos_cases"
+            style="@style/imageViewButtonText"
+            android:text="@string/serious_cases"
+            app:layout_constraintEnd_toEndOf="@+id/imv_sirious_cases"
+            app:layout_constraintStart_toStartOf="@+id/imv_sirious_cases"
+            app:layout_constraintTop_toTopOf="@+id/imv_sirious_cases" />
 
-    <ImageView
-        android:id="@+id/imv_cases_per_million"
-        style="@style/imageViewButton"
-        android:background="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="@+id/imv_total_active_cases"
-        app:layout_constraintStart_toStartOf="@+id/imv_total_active_cases"
-        app:layout_constraintTop_toBottomOf="@+id/imv_total_active_cases" />
+        <TextView
+            android:id="@+id/txv_serious_cases_answer"
+            style="@style/textAnswerButtonText"
+            app:layout_constraintBottom_toBottomOf="@+id/imv_sirious_cases"
+            app:layout_constraintEnd_toEndOf="@+id/imv_sirious_cases"
+            app:layout_constraintStart_toStartOf="@+id/imv_sirious_cases"
+            tools:text="0" />
+        <!--______________________________________________________________-->
 
-    <TextView
-        android:id="@+id/txv_label_cases_per_million"
-        style="@style/imageViewButtonText"
-        android:text="@string/cases_per_million"
-        app:layout_constraintEnd_toEndOf="@+id/imv_cases_per_million"
-        app:layout_constraintStart_toStartOf="@+id/imv_cases_per_million"
-        app:layout_constraintTop_toTopOf="@+id/imv_cases_per_million" />
+        <ImageView
+            android:id="@+id/imv_cases_per_million"
+            style="@style/imageViewButton"
+            android:background="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="@+id/imv_total_active_cases"
+            app:layout_constraintStart_toStartOf="@+id/imv_total_active_cases"
+            app:layout_constraintTop_toBottomOf="@+id/imv_total_active_cases" />
 
-    <TextView
-        android:id="@+id/txv_cases_per_million_answer"
-        style="@style/textAnswerButtonText"
-        app:layout_constraintBottom_toBottomOf="@+id/imv_cases_per_million"
-        app:layout_constraintEnd_toEndOf="@+id/txv_label_cases_per_million"
-        app:layout_constraintStart_toStartOf="@+id/txv_label_cases_per_million"
-        tools:text="0" />
-    <!--______________________________________________________________-->
+        <TextView
+            android:id="@+id/txv_label_cases_per_million"
+            style="@style/imageViewButtonText"
+            android:text="@string/cases_per_million"
+            app:layout_constraintEnd_toEndOf="@+id/imv_cases_per_million"
+            app:layout_constraintStart_toStartOf="@+id/imv_cases_per_million"
+            app:layout_constraintTop_toTopOf="@+id/imv_cases_per_million" />
 
-    <ImageView
-        android:id="@+id/imv_deaths_per_million"
-        style="@style/imageViewButton"
-        android:background="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="@+id/imv_death_rate"
-        app:layout_constraintStart_toStartOf="@+id/imv_death_rate"
-        app:layout_constraintTop_toBottomOf="@+id/imv_death_rate" />
+        <TextView
+            android:id="@+id/txv_cases_per_million_answer"
+            style="@style/textAnswerButtonText"
+            app:layout_constraintBottom_toBottomOf="@+id/imv_cases_per_million"
+            app:layout_constraintEnd_toEndOf="@+id/txv_label_cases_per_million"
+            app:layout_constraintStart_toStartOf="@+id/txv_label_cases_per_million"
+            tools:text="0" />
+        <!--______________________________________________________________-->
 
-    <TextView
-        android:id="@+id/txv_label_deaths_per_million"
-        style="@style/imageViewButtonText"
-        android:text="@string/deaths_per_million"
-        app:layout_constraintEnd_toEndOf="@+id/imv_deaths_per_million"
-        app:layout_constraintStart_toStartOf="@+id/imv_deaths_per_million"
-        app:layout_constraintTop_toTopOf="@+id/imv_deaths_per_million" />
+        <ImageView
+            android:id="@+id/imv_deaths_per_million"
+            style="@style/imageViewButton"
+            android:background="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="@+id/imv_death_rate"
+            app:layout_constraintStart_toStartOf="@+id/imv_death_rate"
+            app:layout_constraintTop_toBottomOf="@+id/imv_death_rate" />
 
-    <TextView
-        android:id="@+id/txv_deaths_per_million_answer"
-        style="@style/textAnswerButtonText"
-        app:layout_constraintBottom_toBottomOf="@+id/imv_deaths_per_million"
-        app:layout_constraintEnd_toEndOf="@+id/txv_label_deaths_per_million"
-        app:layout_constraintStart_toStartOf="@+id/txv_label_deaths_per_million"
-        tools:text="0" />
-    <!--______________________________________________________________-->
-    <ImageView
-        android:id="@+id/imv_danger_rank"
-        style="@style/imageViewButton"
-        android:background="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="@+id/imv_sirious_cases"
-        app:layout_constraintStart_toStartOf="@+id/imv_sirious_cases"
-        app:layout_constraintTop_toBottomOf="@+id/imv_sirious_cases" />
+        <TextView
+            android:id="@+id/txv_label_deaths_per_million"
+            style="@style/imageViewButtonText"
+            android:text="@string/deaths_per_million"
+            app:layout_constraintEnd_toEndOf="@+id/imv_deaths_per_million"
+            app:layout_constraintStart_toStartOf="@+id/imv_deaths_per_million"
+            app:layout_constraintTop_toTopOf="@+id/imv_deaths_per_million" />
 
-    <TextView
-        android:id="@+id/txv_label_danger_rank"
-        style="@style/imageViewButtonText"
-        android:text="@string/danger_rank"
-        app:layout_constraintEnd_toEndOf="@+id/imv_danger_rank"
-        app:layout_constraintStart_toStartOf="@+id/imv_danger_rank"
-        app:layout_constraintTop_toTopOf="@+id/imv_danger_rank" />
+        <TextView
+            android:id="@+id/txv_deaths_per_million_answer"
+            style="@style/textAnswerButtonText"
+            app:layout_constraintBottom_toBottomOf="@+id/imv_deaths_per_million"
+            app:layout_constraintEnd_toEndOf="@+id/txv_label_deaths_per_million"
+            app:layout_constraintStart_toStartOf="@+id/txv_label_deaths_per_million"
+            tools:text="0" />
+        <!--______________________________________________________________-->
+        <ImageView
+            android:id="@+id/imv_danger_rank"
+            style="@style/imageViewButton"
+            android:background="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="@+id/imv_sirious_cases"
+            app:layout_constraintStart_toStartOf="@+id/imv_sirious_cases"
+            app:layout_constraintTop_toBottomOf="@+id/imv_sirious_cases" />
 
-    <TextView
-        android:id="@+id/txv_danger_rank_answer"
-        style="@style/textAnswerButtonText"
-        app:layout_constraintBottom_toBottomOf="@+id/imv_danger_rank"
-        app:layout_constraintEnd_toEndOf="@+id/txv_label_danger_rank"
-        app:layout_constraintStart_toStartOf="@+id/txv_label_danger_rank"
-        tools:text="0" />
-    <!--______________________________________________________________-->
+        <TextView
+            android:id="@+id/txv_label_danger_rank"
+            style="@style/imageViewButtonText"
+            android:text="@string/danger_rank"
+            app:layout_constraintEnd_toEndOf="@+id/imv_danger_rank"
+            app:layout_constraintStart_toStartOf="@+id/imv_danger_rank"
+            app:layout_constraintTop_toTopOf="@+id/imv_danger_rank" />
 
-
-    <ImageView
-        android:id="@+id/imv_flag"
-        style="@style/imageViewButton"
-        android:layout_width="90dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="24dp"
-        android:background="@color/colorAccent"
-        android:src="@drawable/ic_flag_black_24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/imv_cases_per_million"
-        app:layout_constraintTop_toBottomOf="@+id/imv_cases_per_million" />
+        <TextView
+            android:id="@+id/txv_danger_rank_answer"
+            style="@style/textAnswerButtonText"
+            app:layout_constraintBottom_toBottomOf="@+id/imv_danger_rank"
+            app:layout_constraintEnd_toEndOf="@+id/txv_label_danger_rank"
+            app:layout_constraintStart_toStartOf="@+id/txv_label_danger_rank"
+            tools:text="0" />
+        <!--______________________________________________________________-->
 
 
-    <TextView
-        android:id="@+id/txv_updated"
-        style="@style/textAnswerButtonText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-         android:layout_marginTop="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="date" />
+        <ImageView
+            android:id="@+id/imv_flag"
+            style="@style/imageViewButton"
+            android:layout_width="90dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="24dp"
+            android:background="@color/colorAccent"
+            android:src="@drawable/ic_flag_black_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/imv_cases_per_million"
+            app:layout_constraintTop_toBottomOf="@+id/imv_cases_per_million" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ProgressBar
+            android:id="@+id/loader-icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
+            android:indeterminate="true"
+            app:layout_constraintBottom_toBottomOf="@+id/imv_flag"
+            app:layout_constraintEnd_toEndOf="@+id/imv_flag"
+            app:layout_constraintStart_toStartOf="@+id/imv_flag"
+            app:layout_constraintTop_toTopOf="@+id/imv_flag" />
+
+        <TextView
+            android:id="@+id/txv_label_updated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:text="@string/updated"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/txv_updated"
+            app:layout_constraintEnd_toStartOf="@+id/txv_updated"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txv_updated" />
+
+        <TextView
+            android:id="@+id/txv_updated"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txv_fav1"
+            tools:text="date" />
+
+        <ImageView
+            android:id="@+id/imv_favorite1"
+            style="@style/imageViewButton"
+            android:layout_width="90dp"
+            android:layout_height="60dp"
+            android:background="@color/colorAccent"
+            android:src="@drawable/ic_flag_black_24dp"
+            app:layout_constraintEnd_toEndOf="@+id/imv_deaths_per_million"
+            app:layout_constraintStart_toStartOf="@+id/imv_deaths_per_million"
+            app:layout_constraintTop_toTopOf="@+id/imv_favorite3" />
+
+        <ImageView
+            android:id="@+id/imv_favorite2"
+            style="@style/imageViewButton"
+            android:layout_width="90dp"
+            android:layout_height="60dp"
+            android:background="@color/colorAccent"
+            android:src="@drawable/ic_flag_black_24dp"
+            app:layout_constraintEnd_toEndOf="@+id/imv_danger_rank"
+            app:layout_constraintStart_toStartOf="@+id/imv_danger_rank"
+            app:layout_constraintTop_toTopOf="@+id/imv_favorite3" />
+
+        <ImageView
+            android:id="@+id/imv_favorite3"
+            style="@style/imageViewButton"
+            android:layout_width="90dp"
+            android:layout_height="60dp"
+            android:background="@color/colorAccent"
+            android:src="@drawable/ic_flag_black_24dp"
+            app:layout_constraintEnd_toEndOf="@+id/imv_flag"
+            app:layout_constraintStart_toStartOf="@+id/imv_flag"
+            app:layout_constraintTop_toBottomOf="@+id/txv_current_country" />
+
+        <TextView
+            android:id="@+id/txv_current_country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/current_country"
+            app:layout_constraintEnd_toEndOf="@+id/imv_flag"
+            app:layout_constraintStart_toStartOf="@+id/imv_flag"
+            app:layout_constraintTop_toBottomOf="@+id/imv_flag" />
+
+            <TextView
+                android:id="@+id/txv_fav1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/favorite1"
+                app:layout_constraintEnd_toEndOf="@+id/imv_favorite1"
+                app:layout_constraintStart_toStartOf="@+id/imv_favorite1"
+                app:layout_constraintTop_toBottomOf="@+id/imv_favorite1" />
+            <TextView
+                android:id="@+id/txv_fav2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/favorite2"
+                app:layout_constraintEnd_toEndOf="@+id/imv_favorite2"
+                app:layout_constraintStart_toStartOf="@+id/imv_favorite2"
+                app:layout_constraintTop_toBottomOf="@+id/imv_favorite2" />
+            <TextView
+                android:id="@+id/txv_fav3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/favorite3"
+                app:layout_constraintEnd_toEndOf="@+id/imv_favorite3"
+                app:layout_constraintStart_toStartOf="@+id/imv_favorite3"
+                app:layout_constraintTop_toBottomOf="@+id/imv_favorite3" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

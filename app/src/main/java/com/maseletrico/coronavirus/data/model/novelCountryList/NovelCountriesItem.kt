@@ -1,10 +1,9 @@
-package com.maseletrico.coronavirus.data.model.novelCovid
+package com.maseletrico.coronavirus.data.model.novelCountryList
 
 
 import com.google.gson.annotations.SerializedName
-import java.util.*
 
-data class novelByCountry(
+data class NovelCountriesItem(
     @SerializedName("country")
     val country: String,
     @SerializedName("countryInfo")

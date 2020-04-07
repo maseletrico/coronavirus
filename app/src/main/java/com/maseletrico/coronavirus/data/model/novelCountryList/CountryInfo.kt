@@ -13,9 +13,9 @@ data class CountryInfo(
     @SerializedName("country")
     val country: String,
     @SerializedName("lat")
-    val lat: Int,
+    val lat: Number,
     @SerializedName("long")
-    val long: Int,
+    val long: Number,
     @SerializedName("flag")
     val flag: String
 )

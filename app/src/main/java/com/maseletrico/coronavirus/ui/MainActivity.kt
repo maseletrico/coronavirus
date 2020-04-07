@@ -10,7 +10,7 @@ import com.maseletrico.coronavirus.viewModel.CountryStatsViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import me.ibrahimsn.lib.OnItemSelectedListener
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
 
     private val fragmentManager = supportFragmentManager
     private val countryFragment = CountryFragment()
@@ -26,11 +26,19 @@ class MainActivity : AppCompatActivity() {
             CountryStatsViewModel::class.java
         )
 
-        smooth_bottom_bar.setOnItemSelectedListener(object: OnItemSelectedListener {
+        smooth_bottom_bar.setOnItemSelectedListener(object : OnItemSelectedListener {
             override fun onItemSelect(pos: Int) {
-                when(pos){
-                    0 ->  viewModelCountryStats.getCountryStats("BR")
-                    1 ->  viewModelCountryStats.getGlobalStats()
+                when (pos) {
+                    0 -> {
+                        viewModelCountryStats.getCountryStats("BR")
+                        callFragCountry()
+                    }
+                    1 -> {
+                        viewModelCountryStats.getGlobalStats()
+                        callFragGlobal()
+                    }
+
+
                 }
             }
         })
@@ -38,20 +46,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun callFragCountry() {
         val transaction = fragmentManager.beginTransaction()
-        transaction.replace(R.id.content_frame,countryFragment)
+        transaction.replace(R.id.content_frame, countryFragment)
         transaction.commit()
     }
 
     private fun callFragGlobal() {
         val transaction = fragmentManager.beginTransaction()
-        transaction.replace(R.id.content_frame,globalFragment)
+        transaction.replace(R.id.content_frame, globalFragment)
         transaction.commit()
     }
 
     private fun callFragTimeline() {
         val transaction = fragmentManager.beginTransaction()
-        transaction.replace(R.id.content_frame,countryFragment)
+        transaction.replace(R.id.content_frame, countryFragment)
         transaction.commit()
     }
+
 
 }

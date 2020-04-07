@@ -18,4 +18,11 @@
     <string name="cases_per_million">Casos por\nmilhão</string>
     <string name="deaths_per_million">Óbitos por\nmilhão</string>
     <string name="danger_rank">Classificação\nde perigo</string>
+    <string name="saved_country">savedCountry</string>
+    <string name="saved_country_default_key">BR</string>
+    <string name="updated">Atualizado em:</string>
+    <string name="current_country">País</string>
+    <string name="favorite1">Favorito1</string>
+    <string name="favorite2">Favorito2</string>
+    <string name="favorite3">Favorito3</string>
 </resources>
