@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import com.maseletrico.coronavirus.R
 import com.maseletrico.coronavirus.data.entities.FavoriteCountriesEntity
 import com.maseletrico.coronavirus.data.room.AppDatabase
@@ -49,6 +51,15 @@ class CountryFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+        MobileAds.initialize(this.context) {}
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
+
+        imv_flag.setOnClickListener {
+            spinner_country.performClick()
+
+        }
     }
 
     override fun onResume() {
@@ -95,9 +106,6 @@ class CountryFragment : Fragment() {
         val viewModelCountryStats: CountryStatsViewModel = ViewModelProvider(this).get(
             CountryStatsViewModel::class.java
         )
-
-
-        viewModelCountryStats.getCountryTimeline(countrySaved)
 
         viewModelCountryStats.countryCoronaStats.observe(viewLifecycleOwner, Observer {
             it?.let { countryStatistic ->
@@ -178,6 +186,7 @@ class CountryFragment : Fragment() {
                             countryCodeSelected?.let { selectedCountry ->
                                 viewModelCountryStats.getNovelCountryStats(countryCodeSelected)
                                 viewModelCountryStats.getCountryHistorical(countryCodeSelected)
+                                viewModelCountryStats.getCountryStats(countryCodeSelected)
                                 savePreference(selectedCountry)
                             }
                             viewModelCountryStats.getNovelCountries()
@@ -192,12 +201,7 @@ class CountryFragment : Fragment() {
 
         }
 
-        imv_favorite1.setOnClickListener{
 
-        }
-//        imv_favorite1.setOnLongClickListener {
-//
-//        }
     }
 
 
@@ -210,6 +214,9 @@ class CountryFragment : Fragment() {
         txv_new_deaths_today_answer.text = ""
         txv_active_cases_answer.text = ""
         txv_serious_cases_answer.text = ""
+        txv_cases_per_million_answer.text = ""
+        txv_deaths_per_million_answer.text = ""
+        txv_danger_rank_answer.text = ""
         loader_icon.visibility = View.GONE
         Toast.makeText(context, getString(R.string.country_not_found), Toast.LENGTH_LONG).show()
     }

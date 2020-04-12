@@ -13,8 +13,6 @@ import com.maseletrico.coronavirus.data.model.novelCountryList.NovelCountriesIte
 import com.maseletrico.coronavirus.data.model.novelCovid.NovelByCountry
 import com.maseletrico.coronavirus.data.model.novelHystorical.NovelCountryHistorical
 import com.maseletrico.coronavirus.data.model.novelHystorical.Timeline
-import com.maseletrico.coronavirus.data.model.timeline.CoronaTimeline
-import com.maseletrico.coronavirus.data.model.timeline.Timelineitem
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -60,30 +58,6 @@ class CountryStatsViewModel : ViewModel() {
             }
         })
         return stats
-    }
-
-    fun getCountryTimeline(currentCountryCode: String?): MutableLiveData<List<Timelineitem>> {
-        val timelineStats: MutableLiveData<List<Timelineitem>> = MutableLiveData()
-        ApiService.service.timelineList(currentCountryCode)
-            .enqueue(object : Callback<CoronaTimeline> {
-
-                override fun onFailure(call: Call<CoronaTimeline>, t: Throwable) {
-                    apiErr.value = "Erro ao carregar API"
-                    Log.e("API STAT ", t.toString())
-                }
-
-                override fun onResponse(
-                    call: Call<CoronaTimeline>, response: Response<CoronaTimeline>
-                ) {
-                    if (response.body() != null) {
-                        response.body().let { coronaTimelineResponse ->
-                            timelineStats.value = coronaTimelineResponse?.timelineitems
-                        }
-                    }
-                }
-
-            })
-        return timelineStats
     }
 
     fun getGlobalStats(): MutableLiveData<List<GlobalData>> {
@@ -173,13 +147,13 @@ class CountryStatsViewModel : ViewModel() {
         return novelCountryHistorical
     }
 
-    fun setCurrentCountryCode(code: String){
-        currentCountryCode.value = code
-        val xx = currentCountryCode.value
-    }
-
-    fun getCurrentCountryCode(): String?{
-        return currentCountryCode.value
-    }
+//    fun setCurrentCountryCode(code: String){
+//        currentCountryCode.value = code
+//        val xx = currentCountryCode.value
+//    }
+//
+//    fun getCurrentCountryCode(): String?{
+//        return currentCountryCode.value
+//    }
 
 }
